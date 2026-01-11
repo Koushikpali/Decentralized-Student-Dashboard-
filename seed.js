@@ -49,10 +49,10 @@ async function seed() {
       portfolioLink: "https://koushik-portfolio.netlify.app",
     },
     {
-      name: "Virnda Sharma",
-      email: "virnda.sharma@example.com",
+      name: "Virnda gupta",
+      email: "virnda.gupta@example.com",
       password: "Virnda123!",
-      department: "IT",
+      department: "Et",
       year: 3,
       skills: ["Java", "Spring Boot", "SQL"],
       resumeLink: "https://drive.google.com/file/d/virnda-resume",
@@ -115,7 +115,7 @@ async function seed() {
       issuer: "Coursera",
       date: new Date("2024-07-15"),
       fileUrl: "https://drive.google.com/file/d/fullstack-cert",
-      verificationStatus: "verified",
+      verificationStatus: "pending",
       verificationLevel: "institute",
       verifierComments: "Excellent completion",
     });
@@ -127,7 +127,7 @@ async function seed() {
       type: "internship",
       duration: "3 months",
       description: "Worked on backend APIs and database optimization.",
-      verificationStatus: "verified",
+      verificationStatus: "PENDING",
     });
 
     // Projects
@@ -137,7 +137,7 @@ async function seed() {
       description: "Web app to connect students looking for roommates.",
       techStack: ["Node.js", "React", "MongoDB"],
       githubLink: "https://github.com/example/roommate-finder",
-      verificationStatus: "pending",
+      verificationStatus: "PENDING",
       tags: [],
     });
 

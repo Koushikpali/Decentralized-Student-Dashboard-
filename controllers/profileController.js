@@ -5,13 +5,21 @@ const User = require("../models/User");
 exports.getProfile = async (req, res, next) => {
   try {
     console.log("Request user:", req.user);
-    const profile = await Profile.findOne({ userId: req.user.id }).populate("userId", "name email role");
-    console.log("Fetched profile:", profile);
+
+    const profile = await Profile.findOne({ userId: req.user.id }).populate(
+      "userId",
+      "name email role"
+    );
+
     if (!profile) {
       console.log("Profile not found for userId:", req.user.id);
       return res.status(404).json({ message: "Profile not found" });
     }
-    res.json({ success: true, profile });
+
+    // also fetch user (in case you want full info like email/role directly)
+    const user = await User.findById(req.user.id).select("-password"); // exclude password
+
+    res.json({ success: true, profile, user });
   } catch (err) {
     console.log("Error in getProfile:", err);
     next(err);

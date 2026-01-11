@@ -13,10 +13,6 @@ import { loadFull } from "tsparticles";
 export default function Dashboard() {
   const { user } = useContext(AuthContext);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("student");
-
   const [profile, setProfile] = useState(null);
   const [projects, setProjects] = useState([]);
   const [certificates, setCertificates] = useState([]);
@@ -25,6 +21,9 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("dashboard");
 
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("student");
   const [department, setDepartment] = useState("");
   const [year, setYear] = useState("");
   const [skills, setSkills] = useState("");
@@ -48,7 +47,9 @@ export default function Dashboard() {
         setStats(statsData?.gamification || null);
 
         // Populate form
-        setName(profileData?.profile?.userId?.name || "");
+        setName(profileData?.user?.name || profileData?.profile?.userId?.name || "");
+        setEmail(profileData?.user?.email || profileData?.profile?.userId?.email || "");
+        setRole(profileData?.user?.role || profileData?.profile?.userId?.role || "student");
         setDepartment(profileData?.profile?.department || "");
         setYear(profileData?.profile?.year || "");
         setSkills(profileData?.profile?.skills ? profileData.profile.skills.join(", ") : "");
@@ -102,29 +103,19 @@ export default function Dashboard() {
           background: { color: { value: "transparent" } },
           fpsLimit: 60,
           interactivity: {
-            events: {
-              onHover: { enable: true, mode: ["repulse", "bubble"] },
-              onClick: { enable: true, mode: "push" },
-              resize: true
-            },
-            modes: {
-              repulse: { distance: 120, duration: 0.5 },
-              bubble: { distance: 150, size: 6, duration: 0.3, opacity: 1 },
-              push: { quantity: 3 }
-            }
+            events: { onHover: { enable: true, mode: ["repulse", "bubble"] }, onClick: { enable: true, mode: "push" }, resize: true },
+            modes: { repulse: { distance: 120 }, bubble: { distance: 150, size: 6 }, push: { quantity: 3 } },
           },
           particles: {
             number: { value: 70, density: { enable: true, area: 900 } },
             color: { value: ["#6aa1ff", "#63e", "#9b59b6", "#ef4444"] },
             shape: { type: "circle" },
-            opacity: { value: 0.6, random: true, anim: { enable: true, speed: 0.5, opacity_min: 0.3, sync: false } },
+            opacity: { value: 0.6, random: true, anim: { enable: true, speed: 0.5, opacity_min: 0.3 } },
             size: { value: { min: 2, max: 6 }, random: true },
             links: { enable: true, distance: 140, color: "#6aa1ff", opacity: 0.4, width: 1 },
-            move: { enable: true, speed: 1, direction: "none", random: true, straight: false, outModes: { default: "out" } },
-            shadow: { enable: true, color: "#6aa1ff", blur: 6 },
-            twinkle: { particles: { enable: true, frequency: 0.02, opacity: 1 } }
+            move: { enable: true, speed: 1, random: true, straight: false, outModes: { default: "out" } },
           },
-          detectRetina: true
+          detectRetina: true,
         }}
         className="absolute inset-0 z-0"
       />
@@ -133,7 +124,7 @@ export default function Dashboard() {
 
       <div className="relative z-10 p-6 max-w-6xl mx-auto space-y-8">
         <h1 className="text-4xl font-bold text-white text-center mb-6 animate-fadeIn">
-          Welcome, {profile?.userId?.name || "User"}!
+          Welcome, {profile?.userId?.name || name || "User"}!
         </h1>
 
         {/* Tabs */}
@@ -159,8 +150,11 @@ export default function Dashboard() {
             {/* Profile Card */}
             <div className="bg-white/5 backdrop-blur-lg rounded-3xl p-6 shadow-lg border border-white/20 hover:scale-105 transition-transform duration-300">
               <h2 className="font-bold text-xl mb-2 text-white">Profile Info</h2>
-              <p className="text-gray-300">Department: {profile?.department || "N/A"}</p>
-              <p className="text-gray-300">Year: {profile?.year || "N/A"}</p>
+              <p className="text-gray-300">Name: {name}</p>
+              <p className="text-gray-300">Email: {email}</p>
+              <p className="text-gray-300">Role: {role}</p>
+              <p className="text-gray-300">Department: {department || "N/A"}</p>
+              <p className="text-gray-300">Year: {year || "N/A"}</p>
               <p className="text-gray-300">Points: {stats?.points || 0}</p>
             </div>
 
@@ -174,7 +168,7 @@ export default function Dashboard() {
                       <h3 className="font-semibold text-white">{p.title}</h3>
                       <p className="text-gray-300">{p.description}</p>
                     </div>
-                    <p className="text-sm text-gray-400 mt-1 md:mt-0">Tech: {p.techStack}</p>
+                    <p className="text-sm text-gray-400 mt-1 md:mt-0">Tech: {p.techStack.join(", ")}</p>
                   </div>
                 ))
               ) : (
@@ -213,7 +207,7 @@ export default function Dashboard() {
           <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 shadow-lg border border-white/20 max-w-xl mx-auto animate-fadeIn">
             <h2 className="font-bold text-xl mb-4 text-white text-center">Update Personal Info</h2>
             <form onSubmit={handleUpdateProfile} className="space-y-4">
-              {[
+              {[ 
                 { label: "Full Name", value: name, setter: setName, type: "text" },
                 { label: "Email", value: email, setter: setEmail, type: "email" },
                 { label: "Password", value: password, setter: setPassword, type: "password" },

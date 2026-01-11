@@ -91,12 +91,12 @@ export default function AddExperience() {
           onChange={(e) => setType(e.target.value)}
           className="w-full border rounded-md px-3 py-2 mb-4 bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-purple-400"
         >
-          <option value="internship">Internship</option>
-          <option value="hackathon">Hackathon</option>
-          <option value="award">Award</option>
-          <option value="competition">Competition</option>
-          <option value="club_activity">Club Activity</option>
-          <option value="community_service">Community Service</option>
+          <option value="internship" className="text-black">Internship</option>
+          <option value="hackathon" className="text-black">Hackathon</option>
+          <option value="award" className="text-black">Award</option>
+          <option value="competition" className="text-black">Competition</option>
+          <option value="club_activity" className="text-black">Club Activity</option>
+          <option value="community_service" className="text-black">Community Service</option>
         </select>
 
         <input

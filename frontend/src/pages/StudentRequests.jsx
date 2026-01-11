@@ -76,7 +76,7 @@ export default function StudentRequests() {
       <h2 className="text-2xl font-semibold text-gray-800">Student Requests</h2>
 
       {/* Pending Certificates */}
-      <div className="bg-white/20 backdrop-blur-md p-6 rounded-3xl shadow-lg border border-white/20">
+      <div className="bg-white backdrop-blur-md p-6 rounded-3xl shadow-lg border border-white/20">
         <h3 className="text-xl font-bold mb-4 text-purple-700 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-600">
           Pending Certificates
         </h3>
@@ -84,7 +84,7 @@ export default function StudentRequests() {
       </div>
 
       {/* Pending Experiences */}
-      <div className="bg-white/20 backdrop-blur-md p-6 rounded-3xl shadow-lg border border-white/20">
+      <div className="bg-white backdrop-blur-md p-6 rounded-3xl shadow-lg border border-white/20">
         <h3 className="text-xl font-bold mb-4 text-purple-700 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-600">
           Pending Experiences
         </h3>
