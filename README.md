@@ -130,3 +130,8 @@ No license specified. To make project use clear, add a LICENSE file (e.g., MIT, 
 
 ## Contact
 Repository: https://github.com/Koushikpali/Decentralized-Student-Dashboard-
+![Screenshot 1](Screenshot%202026-01-20%20015706.png)
+![Screenshot 2](Screenshot%202026-01-20%20015721.png)
+![Screenshot 3](Screenshot%202026-01-20%20015944.png)
+![Screenshot 4](Screenshot%202026-01-20%20020016.png)
+
