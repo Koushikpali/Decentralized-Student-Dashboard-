@@ -9,9 +9,6 @@ Table of Contents
 - [About](#about)
 - [Features](#features)
 - [Tech stack](#tech-stack)
-- [Demo & Image proof](#demo--image-proof)
-  - [Where to add images](#where-to-add-images)
-  - [Embedding images (examples)](#embedding-images-examples)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Environment](#environment)
@@ -63,34 +60,6 @@ Where to add images
    git commit -m "Add image proof screenshots"
    git push
 
-Embedding images (examples)
-- Relative path (recommended when images are in the repo):
-  ```md
-  ![Leaderboard — proof](docs/images/proof-leaderboard.png)
-  ```
-
-- GitHub raw URL (useful for external references or READMEs rendered elsewhere):
-  ```md
-  ![Dashboard — proof](https://raw.githubusercontent.com/Koushikpali/Decentralized-Student-Dashboard-/main/docs/images/proof-dashboard.png)
-  ```
-
-- Control display size using HTML (works in GitHub-rendered README):
-  ```html
-  <p align="center">
-    <img src="docs/images/proof-leaderboard.png" alt="Leaderboard proof" width="1000"/>
-  </p>
-  ```
-
-Placeholders for Image proof (copy-and-replace)
-```md
-## Image Proof
-
-### Image 1 — Leaderboard
-![Image 1 — Leaderboard](docs/images/proof-leaderboard.png)
-
-### Image 2 — Dashboard / Profile
-![Image 2 — Dashboard](docs/images/proof-dashboard.png)
-```
 
 ## Prerequisites
 - Node.js >= 16
